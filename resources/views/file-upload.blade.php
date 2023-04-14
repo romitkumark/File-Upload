@@ -40,6 +40,6 @@
             </div>
         @endif
         </div>
-    </div>  
+    </div>
 </body>
 </html>

@@ -9,7 +9,8 @@ use App\Models\File;
 
 class FileUploadController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         return view('file-upload');
     }
 

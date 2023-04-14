@@ -20,5 +20,3 @@ Route::get('/', function () {
 
 Route::get('file-upload', [FileUploadController::class, 'index']);
 Route::post('store', [FileUploadController::class, 'upload']);
-
-// Route::get('send-email', [SendEmailController::class, 'index']);
