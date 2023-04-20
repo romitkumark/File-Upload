@@ -1,38 +1,47 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>File Upload</title>
+    <title>File Upload</title>
  
-  <meta name="csrf-token" content="{{ csrf_token() }}">
- 
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
- 
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <!-- Bootstrap core CSS -->
+    <link href = "{{ asset('css/bootstrap.min.css') }}" rel="stylesheet" />
  
 </head>
 <body>
  
     <div class="container mt-4">
 
-        <h2 class="text-center">File Upload</h2>
+        <h2 class="text-center">Welcome to File Upload</h2>
 
-        <form method="POST" enctype="multipart/form-data" id="upload-file" action="{{ url('store') }}" >
-                    
-            <div class="row">
+        <h6>
+            <ul class="form-group">
+                <li style="color:red;">Allowed extensions - pdf, csv, txt, xls, docx </li>
+                <li style="color:red;">Maximum size of file will be 10MB.</li>
 
-                <div class="col-md-12">
-                    <div class="form-group">
-                        <input type="file" name="file" placeholder="Choose file" id="file">
-                            @error('file')
-                            <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
-                            @enderror
+            </ul>
+        </h6>
+
+        <div class="form-group">
+            <form method="POST" enctype="multipart/form-data" id="upload-file" action="{{ url('store') }}" onSubmit="return submitFileUpload();">
+                        
+                <div class="row">
+
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <input type="file" name="file" placeholder="Choose file" id="file">
+                                @error('file')
+                                <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                                @enderror
+                        </div>
+                    </div>
+                        
+                    <div class="col-md-12">
+                        <button type="submit" class="btn btn-primary" id="submit">Submit</button>
                     </div>
                 </div>
-                    
-                <div class="col-md-12">
-                    <button type="submit" class="btn btn-primary" id="submit">Submit</button>
-                </div>
-            </div>
-        </form>
+            </form>
+        </div>
         <div class="form-group">
         @if(session()->has('status'))
             <div class="alert alert-success">
@@ -41,5 +50,8 @@
         @endif
         </div>
     </div>
+    
+    <!-- Javascript -->
+    <script src="{{asset('js/app.js')}}"></script>
 </body>
 </html>
